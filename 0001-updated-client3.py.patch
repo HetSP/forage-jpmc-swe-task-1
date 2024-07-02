@@ -1,0 +1,28 @@
+From 4bf8cf88fb2dbbcf1d342079907669089b240456 Mon Sep 17 00:00:00 2001
+From: HetSP <hetpatel150802@gmail.com>
+Date: Tue, 2 Jul 2024 12:07:53 +0530
+Subject: [PATCH] updated client3.py
+
+---
+ client3.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/client3.py b/client3.py
+index 063ad04..503b5ed 100644
+--- a/client3.py
++++ b/client3.py
+@@ -52,8 +52,10 @@ if __name__ == "__main__":
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock] = price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price['ABC'], price['DEF']))
++        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+-- 
+2.36.1.windows.1
+
